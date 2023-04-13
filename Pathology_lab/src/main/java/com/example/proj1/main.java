@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class main extends Application {
 
@@ -23,7 +24,9 @@ public class main extends Application {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         launch();
+        Controller cn = new Controller();
+        cn.AddDoctorDetail();
     }
 }

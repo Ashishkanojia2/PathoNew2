@@ -63,7 +63,7 @@
                         <AnchorPane prefHeight="826.0" prefWidth="1399.0" BorderPane.alignment="CENTER">
 
                             <children>
-                                <AnchorPane fx:id="GreenTable_Screen" layoutX="184.0" layoutY="209.0" prefHeight="773.0" prefWidth="1399.0" styleClass="red" visible="false" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane fx:id="GreenTable_Screen" layoutX="184.0" layoutY="209.0" prefHeight="773.0" prefWidth="1399.0" styleClass="red" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <BorderPane layoutX="317.0" layoutY="190.0" prefHeight="759.2" prefWidth="1399.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <right>
@@ -71,7 +71,7 @@
                                                     <children>
                                                         <AnchorPane prefHeight="861.0" prefWidth="450.0" styleClass="green">
                                                             <children>
-                                                                <Label layoutX="73.0" layoutY="28.0" prefHeight="42.0" prefWidth="303.0" text="ENTER PATIENT DETAILS" textAlignment="CENTER" textFill="WHITE" underline="true">
+                                                                <Label layoutX="63.0" layoutY="22.0" prefHeight="42.0" prefWidth="303.0" text="ENTER PATIENT DETAILS" textAlignment="CENTER" textFill="WHITE" underline="true">
                                                                     <font>
                                                                         <Font name="Serif Regular" size="24.0" />
                                                                     </font>
@@ -81,7 +81,7 @@
                                                                         <Font name="Serif Regular" size="18.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField layoutX="189.0" layoutY="104.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Full Name">
+                                                                <TextField fx:id="Col_P_Name" layoutX="189.0" layoutY="104.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Full Name">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
@@ -121,52 +121,61 @@
                                                                         <Font name="Serif Regular" size="18.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField layoutX="189.0" layoutY="188.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Gender">
+                                                                <TextField fx:id="Col_P_Gender" layoutX="189.0" layoutY="188.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Gender">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <TextField layoutX="189.0" layoutY="231.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Phone/Mobile No.">
+                                                                <TextField fx:id="Col_P_Phone" layoutX="189.0" layoutY="231.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Phone/Mobile No.">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <TextField layoutX="189.0" layoutY="273.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Full Address">
+                                                                <TextField fx:id="Col_P_Address" layoutX="189.0" layoutY="273.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Full Address">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <TextField layoutX="189.0" layoutY="315.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Checkup Date">
+                                                                <TextField fx:id="Col_P_Date" layoutX="189.0" layoutY="315.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Checkup Date">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <TextField layoutX="189.0" layoutY="357.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Checkup">
+                                                                <TextField fx:id="Col_P_Checkup" layoutX="189.0" layoutY="357.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Checkup">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <TextField layoutX="189.0" layoutY="398.0" prefHeight="26.0" prefWidth="226.0" promptText="Doctor Refer">
+                                                                <TextField fx:id="Col_P_DoctorRef" layoutX="189.0" layoutY="398.0" prefHeight="26.0" prefWidth="226.0" promptText="Doctor Refer">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <TextField layoutX="189.0" layoutY="146.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Age">
+                                                                <TextField fx:id="Col_P_Age" layoutX="189.0" layoutY="146.0" prefHeight="26.0" prefWidth="226.0" promptText="Patient Age">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <Button layoutX="123.0" layoutY="451.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="248.0" text="SAVE DETAIL" />
+                                                                <Button layoutX="123.0" layoutY="451.0" mnemonicParsing="false" onAction="#AddDoctorDetail" prefHeight="31.0" prefWidth="248.0" text="SAVE DETAIL" />
                                                                 <Label layoutX="63.0" layoutY="533.0" text="Amount:">
                                                                     <font>
                                                                         <Font name="Serif Regular" size="18.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField layoutX="189.0" layoutY="530.0" prefHeight="26.0" prefWidth="226.0">
+                                                                <TextField fx:id="Col_P_Amount" layoutX="189.0" layoutY="530.0" prefHeight="26.0" prefWidth="226.0">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
+                                                <Label layoutX="59.0" layoutY="73.0" text="Patient Id :">
+                                                   <font>
+                                                      <Font name="Serif Regular" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="Col_P_Id" layoutX="189.0" layoutY="68.0" prefHeight="26.0" prefWidth="223.0" promptText="Patient ID">
+                                                   <font>
+                                                      <Font name="SansSerif Regular" size="14.0" />
+                                                   </font></TextField>
                                                             </children>
                                                         </AnchorPane>
                                                     </children>
@@ -277,7 +286,7 @@
                                                         <Font name="Serif Regular" size="15.0" />
                                                     </font>
                                                 </TextField>
-                                                <Button fx:id="Doctor_Add_Btn" layoutX="561.0" layoutY="24.0" mnemonicParsing="false"  prefHeight="32.0" prefWidth="184.0" styleClass="item-edit-button" text="Add">
+                                                <Button fx:id="Doctor_Add_Btn" layoutX="561.0" layoutY="24.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="184.0" styleClass="item-edit-button" text="Add">
                                                     <font>
                                                         <Font size="10.0" />
                                                     </font>
@@ -361,7 +370,7 @@
                                         </AnchorPane>
                                     </children>
                                 </AnchorPane>
-                                <AnchorPane fx:id="slotAnchorPane" layoutX="298.0" layoutY="153.0" prefHeight="830.0" prefWidth="1399.0" styleClass="darkBlue" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane fx:id="slotAnchorPane" layoutX="298.0" layoutY="153.0" prefHeight="830.0" prefWidth="1399.0" styleClass="darkBlue" visible="false" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <AnchorPane fx:id="bT01" layoutX="57.0" layoutY="50.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
@@ -408,13 +417,13 @@
                                                 <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ3" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="ThyroidBtn" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
-                                       <graphic>
+                                                    <graphic>
                                                         <ImageView fitHeight="119.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
                                                             <image>
                                                                 <Image url="@Image/thyroid3.jpg" />
                                                             </image>
                                                         </ImageView>
-                                       </graphic>
+                                                    </graphic>
                                                 </Button>
                                                 <Label layoutX="70.0" layoutY="144.0" text="Thyroid Test">
                                                     <font>
@@ -652,15 +661,15 @@
                                                         <Font name="Serif Regular" size="20.0" />
                                                     </font>
                                                 </Label>
-                                    <Button fx:id="UrographyBtn" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="125.0" prefWidth="194.0" styleClass="button_transparent">
-                                       <graphic>
-                                          <ImageView fitHeight="141.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@Image/urography2.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
+                                                <Button fx:id="UrographyBtn" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="125.0" prefWidth="194.0" styleClass="button_transparent">
+                                                    <graphic>
+                                                        <ImageView fitHeight="141.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@Image/urography2.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
                                             </children>
                                         </AnchorPane>
 
@@ -1141,26 +1150,26 @@
                                                 <Font name="Serif Regular" size="19.0" />
                                             </font>
                                         </Text>
-                              <Text layoutX="58.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hyperthyroidism (high function) caused by having too many free thyroid hormones." wrappingWidth="834.1366500854492">
-                                 <font>
-                                    <Font name="Serif Regular" size="19.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="58.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Structural abnormalities, most commonly a goiter (enlargement of the thyroid gland)." wrappingWidth="834.1366500854492">
-                                 <font>
-                                    <Font name="Serif Regular" size="19.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="58.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tumors which can be benign (not cancerous) or cancerous." wrappingWidth="834.1366500854492">
-                                 <font>
-                                    <Font name="Serif Regular" size="19.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="58.0" layoutY="606.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Abnormal thyroid function tests without any clinical symptoms (subclinical hypothyroidism or subclinical hyperthyroidism)." wrappingWidth="834.1366500854492">
-                                 <font>
-                                    <Font name="Serif Regular" size="19.0" />
-                                 </font>
-                              </Text>
+                                        <Text layoutX="58.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hyperthyroidism (high function) caused by having too many free thyroid hormones." wrappingWidth="834.1366500854492">
+                                            <font>
+                                                <Font name="Serif Regular" size="19.0" />
+                                            </font>
+                                        </Text>
+                                        <Text layoutX="58.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Structural abnormalities, most commonly a goiter (enlargement of the thyroid gland)." wrappingWidth="834.1366500854492">
+                                            <font>
+                                                <Font name="Serif Regular" size="19.0" />
+                                            </font>
+                                        </Text>
+                                        <Text layoutX="58.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tumors which can be benign (not cancerous) or cancerous." wrappingWidth="834.1366500854492">
+                                            <font>
+                                                <Font name="Serif Regular" size="19.0" />
+                                            </font>
+                                        </Text>
+                                        <Text layoutX="58.0" layoutY="606.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Abnormal thyroid function tests without any clinical symptoms (subclinical hypothyroidism or subclinical hyperthyroidism)." wrappingWidth="834.1366500854492">
+                                            <font>
+                                                <Font name="Serif Regular" size="19.0" />
+                                            </font>
+                                        </Text>
 
                                     </children>
                                 </AnchorPane>

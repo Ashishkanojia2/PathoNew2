@@ -24,10 +24,7 @@ import javax.swing.text.DefaultEditorKit;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.EventObject;
 import java.util.Optional;
 
@@ -372,164 +369,44 @@ public class Controller implements Initializable {
 
     @FXML
     private TableColumn<Doctor_Data, String> Doctor_col_id;
-    //***************************************************************s
+    //***************************************************************
     private PreparedStatement prepare;
     private Connection connect;
     private ResultSet result;
     private Statement statement;
-
     private Image image;
+    ////////////////////////////////////////////////////////////////////
+    @FXML
+    private TextField Col_P_Id;
+    @FXML
+    private TextField Col_P_Address;
 
-    //******************************************************************
+    @FXML
+    private TextField Col_P_Age;
 
+    @FXML
+    private TextField Col_P_Amount;
 
-//    public void addDoctorAdd() {
-//        String Sql = "Insert into doctor( id_doctor,  d_name, d_age, d_gender, d_experience, de_NoT, d_Income, d_treatment_Chrg) " +
-//                "Values(?,?,?,?,?,?,?)";
-//        connect = dataBase.connectionDB();
-//
-//        try {
-//            Alert alert;
-//            if (Doctor_id.getText().isEmpty() || Doctor_Name.getText().isEmpty() || Doctor_Age.getText().isEmpty() ||
-//                    Doctor_Gender.getText().isEmpty() || Doctor_Expirence.getText().isEmpty() ||
-//                    Doctor_NoT.getText().isEmpty() || Doctor_Income.getText().isEmpty() || Doctor_TreatmentChrg.getText().isEmpty()) {
-//                alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error Meassage");
-//                alert.setHeaderText(null);
-//                alert.setContentText("please fill the all blanks field");
-//                alert.showAndWait();
-//            } else {
-//
-//                String checkData = "Select Doctor_id from doctor where iddoctor '" + Doctor_id.getText() + "'";
-//                statement = connect.createStatement();
-////               resultSet.statement.executeQuery(checkData);
-//                result.getStatement().executeQuery(checkData);
-//                if (result.next()) {
-//                    alert = new Alert(Alert.AlertType.ERROR);
-//                    alert.setTitle("Error Meassage");
-//                    alert.setHeaderText(null);
-//                    alert.setContentText("Doctor id" + Doctor_id.getText() + "was already exists");
-//                    alert.showAndWait();
-//                } else {
-//                }
-//                prepare = connect.prepareStatement(Sql);
-//                prepare.setString(1, Doctor_id.getText());
-//                prepare.setString(2, Doctor_Name.getText());
-//                prepare.setString(3, Doctor_Age.getText());
-//                prepare.setString(4, Doctor_Gender.getText());
-//                prepare.setString(5, Doctor_Expirence.getText());
-//                prepare.setString(6, Doctor_NoT.getText());
-//                prepare.setString(7, Doctor_Income.getText());
-//                prepare.setString(8, Doctor_TreatmentChrg.getText());
-//                prepare.execute(Sql);
-//                prepare.executeUpdate();
-//                addDoctorShowList();
-//
-//            }
-//
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @FXML
+    private TextField Col_P_Checkup;
 
-   /* public void AddDoctorImage(){
-        FileChooser open = new FileChooser();
-        open.setTitle("Import Image File");
-        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image File ", "*jpg","*png"));
+    @FXML
+    private TextField Col_P_Date;
 
-        File file = open.showOpenDialog(main_form.getScene().getWindow());
-        if(file!=null){
-            image = new Image( file.toURI().toString(),307,270,false,true);
-           // ImagePane.setImage(image);
-            getData.path = file.getAbsolutePath();
-        }
-    }*/
+    @FXML
+    private TextField Col_P_DoctorRef;
+
+    @FXML
+    private TextField Col_P_Gender;
+
+    @FXML
+    private TextField Col_P_Name;
+
+    @FXML
+    private TextField Col_P_Phone;
 
 
-    //*******************************************************************************
-// this is for add data in the list
 
-//    public ObservableList<Doctor_Data> addDoctorListData() {
-//        String sql = "select * from doctor";
-//
-//        ObservableList<Doctor_Data> listData = FXCollections.observableArrayList();
-//        connect = dataBase.connectionDB();
-//
-//        try {
-//            prepare = connect.prepareStatement(sql);
-//            result = prepare.executeQuery();
-//
-//            Doctor_Data Dr_Data;
-//            while (result.next()) {
-//                Dr_Data = new Doctor_Data(result.getInt("iddoctor")
-//                        // green text name is must be same as database table name
-//                        , result.getString("D_Name"), result.getInt("D_Age")
-//                        , result.getString("D_Gender"), result.getInt("D_Expirence")
-//                        , result.getInt("D_NoT"), result.getInt("D_Income")
-//                        , result.getString("D_Image")
-//                        , result.getInt("D_Treament_chrg"));
-//
-//                listData.add(Dr_Data);
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return listData;
-//
-//    }
-//
-//    //*******************************************************
-//    private ObservableList<Doctor_Data> addDoctorList;
-//
-//    public void addDoctorShowList() {
-//        addDoctorList = addDoctorListData();
-//        Doctor_col_id.setCellValueFactory(new PropertyValueFactory<>("D_id"));
-//        Doctor_col_Name.setCellValueFactory(new PropertyValueFactory<>("D_Name"));
-//        Doctor_col_age.setCellValueFactory(new PropertyValueFactory<>("D_Age"));
-//        Doctor_col_Gender.setCellValueFactory(new PropertyValueFactory<>("D_Gender"));
-//        Doctor_col_Exprience.setCellValueFactory(new PropertyValueFactory<>("D_Experience"));
-//        Doctor_col_NoT.setCellValueFactory(new PropertyValueFactory<>("D_NoT"));
-//        Doctor_col_Income.setCellValueFactory(new PropertyValueFactory<>("D_Income"));
-//        Doctor_col_TreatmentCharges.setCellValueFactory(new PropertyValueFactory<>("D_Treatment_Chrg"));
-//
-//        addDoctor_tableVew.setItems(addDoctorList);
-//    }
-//
-//    public void addDoctorSelect() {
-//        Doctor_Data Dr_data = addDoctor_tableVew.getSelectionModel().getSelectedItem();
-//        int num = addDoctor_tableVew.getSelectionModel().getSelectedIndex();
-//
-//        if ((num = -1) < -1) {
-//            return;
-//        }
-//        Doctor_id.setText(String.valueOf(Dr_data.getD_id()));
-//        Doctor_Name.setText(String.valueOf(Dr_data.getD_Name()));
-//        Doctor_Age.setText(String.valueOf(Dr_data.getD_Age()));
-//        Doctor_Gender.setText(String.valueOf(Dr_data.getD_Gender()));
-//        Doctor_Expirence.setText(String.valueOf(Dr_data.getD_Experience()));
-//        Doctor_NoT.setText(String.valueOf(Dr_data.getD_NoT()));
-//
-//       /* Doctor_Income.setText(String.valueOf(Dr_data.getD_Income()));
-//        String uri = "file:" + Dr_data.getD_Image();
-//        image =new Image(uri,307,207,false,true);
-//        ImagePane.setImage(image);
-//        getData.path= Dr_data.getD_Image();*/
-//
-//    }
-
-
-    //********************************************* SWITCHING THE PANE ******************************************
-
-    //    public void switchToScene1(ActionEvent event) throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//
-//    }
     public void go_to_inquery(ActionEvent event) {
         if (event.getSource() == INQ1) {
             YellowScreen.setVisible(false);
@@ -1315,9 +1192,6 @@ public class Controller implements Initializable {
             Phonocardiography.setVisible(false);
             Palpation.setVisible(true);
         }
-
-
-
     }
     public void BackBtn(ActionEvent event){
         if(event.getSource() == SlotBackBtn) {
@@ -1346,6 +1220,101 @@ public class Controller implements Initializable {
 
     }
 
+    public void AddDoctorDetail() throws SQLException {
+        String url, username , password;
+        //url  = "jdbc:mysql://127.0.0.1:3306/pathologyLab?autoReconnect=true&useSSL=false";
+         url= "jdbc:mysql://127.0.0.1:3306/pathologyLab?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT";
+        username = "Root";
+        password = "Rootuser2023";
+
+        String Date,Checkup;
+        int Age,Phone,Amount ,Id;
+        String Name,Gender,Address,DoctorRef ;
+
+        Id = Integer.parseInt(Col_P_Id.getText());
+        System.out.println(Id);
+        Name = Col_P_Name.getText();
+        System.out.println(Name);
+        Age = Integer.parseInt(Col_P_Age.getText());
+        System.out.println(Age);
+        Gender = Col_P_Gender.getText();
+        System.out.println(Gender);
+        Address = Col_P_Address.getText();
+        System.out.println(Address);
+        Phone = Integer.parseInt(Col_P_Phone.getText());
+        System.out.println(Phone);
+        Date = Col_P_Date.getText();
+        System.out.println(Date);
+        Checkup = Col_P_Checkup.getText();
+        System.out.println(Checkup);
+        DoctorRef = Col_P_DoctorRef.getText();
+        System.out.println(DoctorRef);
+        // now this is for patient amount
+      //  Amount = Integer.parseInt(Col_P_Amount.getText());
+
+
+        try{
+
+            Connection con = DriverManager.getConnection(url,username,password);
+            String insertQuery = "insert into patient values(?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst =  con.prepareStatement(insertQuery);
+
+            Sdetail detail;
+
+
+            //Col_P_Name.requestFocus();
+            pst.setInt(1,Id);
+            pst.setString(2,Name);
+            pst.setInt(3, Age);
+            pst.setString(4,Gender);
+            pst.setInt(5,Phone);
+            pst.setString(6,Address);
+            pst.setString(7,Date);
+            pst.setString(8,Checkup);
+            pst.setString(9,DoctorRef);
+
+            pst.execute();
+            System.out.println("record is inserted in Database");
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Data Inserted");
+            alert.setTitle("Successfully Added");
+            alert.setContentText("Null");
+            alert.showAndWait();
+//
+//            Col_P_Name.setText("");
+//            Col_P_Age.setText("");
+//            Col_P_Gender.setText("");
+//            Col_P_Phone.setText("");
+//            Col_P_Address.setText("");
+//            Col_P_Date.setText("");
+//            Col_P_Checkup.setText("");
+//            Col_P_DoctorRef.setText("");
+
+            Col_P_Name.requestFocus();
+
+
+
+
+
+
+
+
+        }catch(Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+
+
+
+
+
     //**********************************LOGOUT BUTTON***************************************
     public void logout() {
         try {
@@ -1368,7 +1337,7 @@ public class Controller implements Initializable {
         }
     }
 
-    // this is for last pasgw to send the request
+
     public void sendRequest() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Message");
@@ -1439,7 +1408,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//        addDoctorShowList();
+
 
     }
 }
