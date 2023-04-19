@@ -60,10 +60,10 @@
                     </center>-->
                     <center>
 
-                        <AnchorPane prefHeight="826.0" prefWidth="1399.0" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="828.0" prefWidth="1399.0" BorderPane.alignment="CENTER">
 
                             <children>
-                                <AnchorPane fx:id="GreenTable_Screen" layoutX="184.0" layoutY="209.0" prefHeight="773.0" prefWidth="1399.0" styleClass="red" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane fx:id="GreenTable_Screen" prefHeight="773.0" prefWidth="1399.0" styleClass="red" visible="false" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <BorderPane layoutX="317.0" layoutY="190.0" prefHeight="759.2" prefWidth="1399.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <right>
@@ -156,13 +156,13 @@
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
                                                                 </TextField>
-                                                                <Button layoutX="123.0" layoutY="451.0" mnemonicParsing="false" onAction="#AddDoctorDetail" prefHeight="31.0" prefWidth="248.0" text="SAVE DETAIL" />
-                                                                <Label layoutX="63.0" layoutY="533.0" text="Amount:">
+                                                                <Button layoutX="109.0" layoutY="503.0" mnemonicParsing="false" onAction="#AddDoctorDetail" prefHeight="31.0" prefWidth="248.0" text="SAVE DETAIL" />
+                                                                <Label layoutX="61.0" layoutY="442.0" text="Amount:">
                                                                     <font>
                                                                         <Font name="Serif Regular" size="18.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="Col_P_Amount" layoutX="189.0" layoutY="530.0" prefHeight="26.0" prefWidth="226.0">
+                                                                <TextField fx:id="Col_P_Amount" layoutX="189.0" layoutY="439.0" prefHeight="26.0" prefWidth="226.0" promptText="Amount">
                                                                     <font>
                                                                         <Font name="SansSerif Regular" size="14.0" />
                                                                     </font>
@@ -176,13 +176,14 @@
                                                    <font>
                                                       <Font name="SansSerif Regular" size="14.0" />
                                                    </font></TextField>
+                                                <Button layoutX="109.0" layoutY="547.0" mnemonicParsing="false" onAction="#updatePatient" prefHeight="31.0" prefWidth="248.0" text="UPDATE DETAIL" />
                                                             </children>
                                                         </AnchorPane>
                                                     </children>
                                                 </VBox>
                                             </right>
                                             <center>
-                                                <TableView fx:id="P_COL_TableView" BorderPane.alignment="CENTER">
+                                                <TableView fx:id="P_COL_TableView" onMouseClicked="#addPatientSelect" BorderPane.alignment="CENTER">
                                                     <columns>
                                                         <TableColumn fx:id="P_SNo_Col" prefWidth="84.00002896785736" text="S.No" />
                                                         <TableColumn fx:id="P_Name_Col" prefWidth="66.40001678466797" text="Name" />
@@ -375,7 +376,7 @@
                                     <children>
                                         <AnchorPane fx:id="bT01" layoutX="57.0" layoutY="50.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB1" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ1" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="BloodBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -395,7 +396,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT02" layoutX="57.0" layoutY="534.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB11" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ2" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="BrainBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0">
                                                     <graphic>
@@ -415,7 +416,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT03" layoutX="57.0" layoutY="301.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB6" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ3" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="ThyroidBtn" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -435,7 +436,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT04" layoutX="342.0" layoutY="50.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB2" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ4" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="KidneyBtn" layoutX="6.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="211.0" styleClass="button_transparent">
                                                     <graphic>
@@ -455,7 +456,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT05" layoutX="342.0" layoutY="534.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB12" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ5" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="LumbarBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -475,7 +476,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT06" layoutX="342.0" layoutY="301.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB7" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ6" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="GastricBtn" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="130.0" prefWidth="214.0" styleClass="button_transparent">
                                                     <graphic>
@@ -495,7 +496,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT07" layoutX="617.0" layoutY="50.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB3" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ7" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="LiverBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -515,7 +516,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT08" layoutX="617.0" layoutY="534.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB13" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ8" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="TomographyBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -535,7 +536,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT09" layoutX="617.0" layoutY="301.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB8" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ9" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="SkinBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -555,7 +556,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT10" layoutX="885.0" layoutY="50.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB4" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ10" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="ProteinBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -575,7 +576,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT11" layoutX="885.0" layoutY="534.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB14" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ11" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="PhonocardiographyBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -595,7 +596,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT12" layoutX="885.0" layoutY="301.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB9" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ12" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="UltrasoundBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -615,9 +616,9 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT13" layoutX="1157.0" layoutY="50.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB5" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ13" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
-                                                <Button fx:id="PregnancyBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0">
+                                                <Button fx:id="PregnancyBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
                                                         <ImageView fitHeight="111.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true">
                                                             <image>
@@ -635,7 +636,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT14" layoutX="1157.0" layoutY="534.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB15" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ14" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Button fx:id="PalpationBtn" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#aboutTest" prefHeight="120.0" prefWidth="195.0" styleClass="button_transparent">
                                                     <graphic>
@@ -655,7 +656,7 @@
                                         </AnchorPane>
                                         <AnchorPane fx:id="bT15" layoutX="1157.0" layoutY="301.0" prefHeight="210.0" prefWidth="228.0" styleClass="shadow">
                                             <children>
-                                                <Button layoutX="116.0" layoutY="167.0" mnemonicParsing="false" styleClass="slotBtn" text="Slot Book" />
+                                                <Button fx:id="SB10" layoutX="116.0" layoutY="167.0" mnemonicParsing="false" onAction="#SLotBook" styleClass="slotBtn" text="Slot Book" />
                                                 <Button fx:id="INQ15" layoutX="24.0" layoutY="167.0" mnemonicParsing="false" onAction="#go_to_inquery" styleClass="slotBtn" text="Inquery" />
                                                 <Label layoutX="53.0" layoutY="143.0" text="Urography Test">
                                                     <font>
@@ -920,7 +921,7 @@
                                          </AnchorPane>-->
                                     </children>
                                 </AnchorPane>
-                                <AnchorPane fx:id="YellowScreen" layoutX="332.0" layoutY="141.0" prefHeight="774.0" prefWidth="1399.0" styleClass="yellow" visible="false" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane fx:id="YellowScreen" layoutX="332.0" layoutY="141.0" prefHeight="774.0" prefWidth="1399.0" styleClass="yellow" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <AnchorPane layoutX="28.0" layoutY="34.0" prefHeight="378.0" prefWidth="1334.0" styleClass="shadow">
                                             <children>
@@ -936,16 +937,57 @@
                                         </AnchorPane>
                                         <AnchorPane layoutX="28.0" layoutY="444.0" prefHeight="286.0" prefWidth="286.0" styleClass="shadow">
                                             <children>
-                                                <Label layoutX="71.0" layoutY="30.0" text="Pending Patient ">
+                                                <Label layoutX="53.0" layoutY="44.0" text="No. of Slots Booked">
                                                     <font>
                                                         <Font name="Serif Regular" size="22.0" />
                                                     </font>
                                                 </Label>
+                                    <Text layoutX="127.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="56.0" />
+                                       </font>
+                                    </Text>
                                             </children>
                                         </AnchorPane>
-                                        <AnchorPane layoutX="375.0" layoutY="444.0" prefHeight="286.0" prefWidth="286.0" styleClass="shadow" />
-                                        <AnchorPane layoutX="726.0" layoutY="444.0" prefHeight="286.0" prefWidth="286.0" styleClass="shadow" />
-                                        <AnchorPane layoutX="1075.0" layoutY="444.0" prefHeight="286.0" prefWidth="286.0" styleClass="shadow" />
+                                        <AnchorPane layoutX="375.0" layoutY="444.0" prefHeight="286.0" prefWidth="286.0" styleClass="shadow">
+                                 <children>
+                                    <Text layoutX="130.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="56.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="79.0" layoutY="45.0" text="No. of Inquiry">
+                                       <font>
+                                          <Font name="Serif Regular" size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                                        <AnchorPane layoutX="726.0" layoutY="444.0" prefHeight="286.0" prefWidth="286.0" styleClass="shadow">
+                                 <children>
+                                    <Text layoutX="123.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="56.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="83.0" layoutY="47.0" text="Total Doctor ">
+                                       <font>
+                                          <Font name="Serif Regular" size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                                        <AnchorPane layoutX="1075.0" layoutY="444.0" prefHeight="286.0" prefWidth="286.0" styleClass="shadow">
+                                 <children>
+                                    <Label layoutX="90.0" layoutY="45.0" text="Total Income">
+                                       <font>
+                                          <Font name="Serif Regular" size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Text layoutX="134.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="56.0" />
+                                       </font>
+                                    </Text>
+                                 </children></AnchorPane>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane fx:id="blueScreen" layoutX="440.0" layoutY="209.0" prefHeight="774.0" prefWidth="1399.0" styleClass="blue" stylesheets="@mainSceenStyle.Css" visible="false" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -957,10 +999,10 @@
                                                         <Font name="Serif Regular" size="25.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField alignment="CENTER" layoutX="50.0" layoutY="55.0" prefHeight="38.0" prefWidth="388.0" promptText="First &amp; Last Name" />
-                                                <TextField alignment="CENTER" layoutX="50.0" layoutY="111.0" prefHeight="38.0" prefWidth="388.0" promptText="Mobile No." />
-                                                <TextField alignment="CENTER" layoutX="50.0" layoutY="161.0" prefHeight="38.0" prefWidth="388.0" promptText="Email Id" />
-                                                <TextField alignment="CENTER" layoutX="46.0" layoutY="216.0" prefHeight="38.0" prefWidth="388.0" promptText="Inquery About" />
+                                                <TextField fx:id="IQName_txt" alignment="CENTER" layoutX="50.0" layoutY="55.0" prefHeight="38.0" prefWidth="388.0" promptText="First &amp; Last Name" />
+                                                <TextField fx:id="IQMob_txt" alignment="CENTER" layoutX="50.0" layoutY="111.0" prefHeight="38.0" prefWidth="388.0" promptText="Mobile No." />
+                                                <TextField fx:id="IQEmail_txt" alignment="CENTER" layoutX="50.0" layoutY="161.0" prefHeight="38.0" prefWidth="388.0" promptText="Email Id" />
+                                                <TextField fx:id="IQAbout_txt" alignment="CENTER" layoutX="46.0" layoutY="216.0" prefHeight="38.0" prefWidth="388.0" promptText="Inquery About" />
                                                 <Button layoutX="190.0" layoutY="277.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Request " />
                                             </children>
                                         </AnchorPane>

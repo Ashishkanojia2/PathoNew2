@@ -11,12 +11,74 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.*;
 import java.util.Optional;
 import java.util.ResourceBundle;
 public class Controller implements Initializable {
+    @FXML
+    private Text NSB_txt;
+
+    @FXML
+    private TextField IQAbout_txt;
+
+    @FXML
+    private TextField IQEmail_txt;
+
+    @FXML
+    private TextField IQMob_txt;
+
+    @FXML
+    private TextField IQName_txt;
+
+    @FXML
+    private Button SB1;
+
+    @FXML
+    private Button SB10;
+
+    @FXML
+    private Button SB11;
+
+    @FXML
+    private Button SB12;
+
+    @FXML
+    private Button SB13;
+
+    @FXML
+    private Button SB14;
+
+    @FXML
+    private Button SB15;
+
+    @FXML
+    private Button SB2;
+
+    @FXML
+    private Button SB3;
+
+    @FXML
+    private Button SB4;
+
+    @FXML
+    private Button SB5;
+
+    @FXML
+    private Button SB6;
+
+    @FXML
+    private Button SB7;
+
+    @FXML
+    private Button SB8;
+
+    @FXML
+    private Button SB9;
+
+
     @FXML
     private Button SlotBackBtn;
     @FXML
@@ -372,21 +434,50 @@ public class Controller implements Initializable {
         if((num -1) < - 1 ){
             return;
         }
-        P_SNo_Col.setText(String.valueOf(patientData.getId()));
-        P_Name_Col.setText((patientData.getName()));
-        P_Age_Col.setText(String.valueOf((patientData.getAge())));
-        P_Gender_Col.setText((patientData.getGender()));
-        P_PhoneNo_Col.setText(String.valueOf((patientData.getPhone())));
-        P_Address_Col.setText((patientData.getAddress()));
-        P_Date_Col.setText((patientData.getDate()));
-        P_CheckUp_Col.setText((patientData.getCheckup()));
-        P_DR_Refer_Col.setText((patientData.getDrRef()));
-        P_Amount_Col.setText((patientData.getAmount()));
-
+        Col_P_Id.setText(String.valueOf(patientData.getId()));
+        Col_P_Name.setText((patientData.getName()));
+        Col_P_Age.setText(String.valueOf((patientData.getAge())));
+        Col_P_Gender.setText((patientData.getGender()));
+        Col_P_Phone.setText(String.valueOf((patientData.getPhone())));
+        Col_P_Address.setText((patientData.getAddress()));
+        Col_P_Date.setText((patientData.getDate()));
+        Col_P_Checkup.setText((patientData.getCheckup()));
+        Col_P_DoctorRef.setText((patientData.getDrRef()));
+        Col_P_Amount.setText((patientData.getAmount()));
 
 
 
     }
+
+    public void updatePatient(){
+        String updateQuery ="update pathologylab set P_Name = '"+Col_P_Name.getText()+"'," +
+                " P_Age = '"+Col_P_Age.getText()+"'," +
+                " P_Gender = '"+Col_P_Gender.getText()+"'," +
+                " P_Phone = '"+Col_P_Phone.getText()+"'," +
+                " P_Address = '"+Col_P_Address.getText()+"', " +
+                "P_Date = '"+Col_P_Date.getText()+"', " +
+                "P_Checkup = '"+Col_P_Checkup.getText()+"'," +
+                " P_DrRef = '"+Col_P_DoctorRef.getText()+"'" +
+                ", P_Amount = '"+Col_P_Amount.getText()+"' Where P_id ='"+Col_P_Id+"'";
+        String url,username, password;
+        url = "jdbc:mysql://localhost:3306/yono?autoReconnect=true&useSSL=false";
+        username = "root";
+        password = "Rootuser2023";
+        try {
+            Connection cn2 = DriverManager.getConnection(url, username, password);
+            Statement pstm2 = cn2.createStatement();
+            pstm2.executeUpdate(updateQuery);
+            addPatientShowList();
+
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+
+
+
 
     public void go_to_inquery(ActionEvent event) {
         if (event.getSource() == INQ1) {
@@ -1145,35 +1236,6 @@ public class Controller implements Initializable {
             Palpation.setVisible(true);
         }
     }
-
-//    public void BackBtn(ActionEvent event) {
-//        if (event.getSource() == SlotBackBtn) {
-//            blueScreen.setVisible(false);
-//            slotAnchorPane.setVisible(true);
-//            YellowScreen.setVisible(false);
-//            GreenTable_Screen.setVisible(false);
-//            doctorScreen.setVisible(false);
-//            BloodPane.setVisible(false);
-//            KidneyPane.setVisible(false);
-//            liverPane.setVisible(false);
-//            ThyroidPane.setVisible(false);
-//            GastricPane.setVisible(false);
-//            SkinPane.setVisible(false);
-//            BrainPane.setVisible(false);
-//            LumbarPane.setVisible(false);
-//            TomographyPane.setVisible(false);
-//            proteinPane.setVisible(false);
-//            PregnancyPane.setVisible(false);
-//            UltrasoundPane.setVisible(false);
-//            UrographyBtn.setVisible(false);
-//            Phonocardiography.setVisible(false);
-//            Palpation.setVisible(false);
-//        }
-//
-//
-//    }
-    /////////////comment
-
     public void AddDoctorDetail() throws SQLException {
 
         System.out.println("trying to connect database");
@@ -1192,7 +1254,7 @@ public class Controller implements Initializable {
         Checkup = Col_P_Checkup.getText();
         DoctorRef = Col_P_DoctorRef.getText();
         Amount  = Col_P_Amount.getText();
-        try {
+
             url = "jdbc:mysql://localhost:3306/yono?autoReconnect=true&useSSL=false";
             username = "root";
             password = "Rootuser2023";
@@ -1202,23 +1264,22 @@ public class Controller implements Initializable {
             String insertQuery = "insert into pathologylab values(?,?,?,?,?,?,?,?,?,?)";
             System.out.println("insertQ" + insertQuery);
             PreparedStatement pst = con.prepareStatement(insertQuery);
-            System.out.println("Now database is connected");
             Sdetail detail;
-            System.out.println("trying to connect database(2)");
 
-            //Col_P_Name.requestFocus();
-            pst.setInt(1, Id);
-            pst.setString(2, Name);
-            pst.setInt(3, Age);
-            pst.setString(4, Gender);
-            pst.setString(5, Phone);
-            pst.setString(6, Address);
-            pst.setString(7, Date);
-            pst.setString(8, Checkup);
-            pst.setString(9, DoctorRef);
-            pst.setString(10,Amount);
+                //Col_P_Name.requestFocus();
+                pst.setInt(1, Id);
+                pst.setString(2, Name);
+                pst.setInt(3, Age);
+                pst.setString(4, Gender);
+                pst.setString(5, Phone);
+                pst.setString(6, Address);
+                pst.setString(7, Date);
+                pst.setString(8, Checkup);
+                pst.setString(9, DoctorRef);
+                pst.setString(10, Amount);
 
-            pst.execute();
+                pst.execute();
+
             System.out.println("record is inserted in Database");
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -1238,14 +1299,60 @@ public class Controller implements Initializable {
             Col_P_Amount.setText("");
 
             Col_P_Name.requestFocus();
-        } catch (Exception e) {
-            System.out.println(e);
-            e.printStackTrace();
-        }
         addPatientShowList();
 
     }
+    public void sendRequest(){
+        System.out.println("trying to connect database in Inqury field");
+        String Name,Email,About,Mobile,url1,username1,password1;
+        int MobileNo;
+        url1 = "jdbc:mysql://localhost:3306/yono?autoReconnect=true&useSSL=false";
+        username1 = "root";
+        password1 = "Rootuser2023";
+        String insertQuery = "INSERT into inquery values(?,?,?,?)";
 
+        Name = IQName_txt.getText();
+        Email = IQEmail_txt.getText();
+        Mobile = IQMob_txt.getText();
+        About = IQAbout_txt.getText();
+
+        try {
+            Connection con1 = DriverManager.getConnection(url1,username1,password1);
+            PreparedStatement pstm1 = con1.prepareStatement(insertQuery);
+
+            pstm1.setString(1,Name);
+            pstm1.setString(2,Mobile);
+            pstm1.setString(3,Email);
+            pstm1.setString(4,About);
+           // c
+            System.out.println("INQUERY Record is inserted in Database");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Message");
+           // alert.setHeaderText("Your Inquery is sent ");
+            alert.setContentText("Are you Sure to send the request..!");
+
+           ButtonType okButtton = new ButtonType( "ok", ButtonBar.ButtonData.OK_DONE);
+           ButtonType CancleButtton = new ButtonType( "Cancle", ButtonBar.ButtonData.CANCEL_CLOSE);
+           alert.getButtonTypes().setAll(okButtton,CancleButtton);
+           Optional<ButtonType> result = alert.showAndWait();
+           if(result.get() == okButtton){
+               pstm1.execute();
+               IQName_txt.setText("");
+               IQAbout_txt.setText("");
+               IQMob_txt.setText("");
+               IQEmail_txt.setText("");
+
+           }else{
+               System.out.println("you clicked cancle button");
+           }
+
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+    }
 
     //**********************************LOGOUT BUTTON***************************************
     public void logout() {
@@ -1269,24 +1376,22 @@ public class Controller implements Initializable {
         }
     }
 
-    public void sendRequest() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation Message");
-        alert.setHeaderText(null);
-        alert.setContentText("Are you Sure to send the request..!");
-        Optional<ButtonType> option = alert.showAndWait();
-
-
-    }
-
+    // now i am add a new comment
+    //new changes
 
     //******************************** LOGIN *******************************
 
     public void loginAdmin() {
         String sql = "Select * from user where Email =? and password =? ";
-        connect = dataBase.connectionDB();
+       // connect = dataBase.connectionDB();
+        String url2,username2,password2;
+        url2 = "jdbc:mysql://localhost:3306/student_manage?autoReconnect=true&useSSL=false";
+        username2 = "root";
+        password2 = "Rootuser2023";
+
 
         try {
+            Connection con2 = DriverManager.getConnection(url2,username2, password2);
             preparedStatement = connect.prepareStatement(sql);
             preparedStatement.setString(1, username.getText());
             preparedStatement.setString(2, password.getText());
@@ -1331,13 +1436,387 @@ public class Controller implements Initializable {
         }
     }
 
-    public void closeBtn() {
-        System.exit(0);
+
+      /*  public void MainYellow() {
+            String url = "jdbc:mysql://localhost:3306/student_manage?autoReconnect=true&useSSL=false";
+            String username = "root";
+            String password = "Rootuser2023";
+            ResultSet resultSet;
+            int countTC = 0;
+            Connection cn;
+
+            try {
+                String StringQuery = "select Count(P_id) from pathologylab";
+                cn = DriverManager.getConnection(url, username, password);
+                PreparedStatement pstm = cn.prepareStatement(StringQuery);
+                resultSet = pstm.executeQuery();
+                while (resultSet.next()) {
+                    countTC = resultSet.getInt("Count(P_id)");
+                    NSB_txt.setText(String.valueOf(countTC));
+                }
+
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }*/
+            public void SLotBook(ActionEvent event){
+        if (event.getSource() == SB1){
+            Col_P_Checkup.setText("Blood Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB2){
+            Col_P_Checkup.setText("Kidney CheckUp");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB3){
+            Col_P_Checkup.setText("Liver Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB4){
+            Col_P_Checkup.setText("Protein CheckUp");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB5){
+            Col_P_Checkup.setText("Pregnnancy Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB6){
+            Col_P_Checkup.setText("Thyroid Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB7){
+            Col_P_Checkup.setText("Gastric Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB8){
+            Col_P_Checkup.setText("Skin Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB9){
+            Col_P_Checkup.setText("Ultrasound Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB10){
+            Col_P_Checkup.setText("Urography Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB11){
+            Col_P_Checkup.setText("Brain Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB12){
+            Col_P_Checkup.setText("Lumbar Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB13){
+            Col_P_Checkup.setText("Tomography Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB14){
+            Col_P_Checkup.setText("Phonocardiography Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
+        else if (event.getSource() == SB15){
+            Col_P_Checkup.setText("Palpation Test");
+            YellowScreen.setVisible(false);
+            GreenTable_Screen.setVisible(true);
+            doctorScreen.setVisible(false);
+            blueScreen.setVisible(false);
+            slotAnchorPane.setVisible(false);
+            BloodPane.setVisible(false);
+            KidneyPane.setVisible(false);
+            liverPane.setVisible(false);
+            ThyroidPane.setVisible(false);
+            GastricPane.setVisible(false);
+            SkinPane.setVisible(false);
+            BrainPane.setVisible(false);
+            LumbarPane.setVisible(false);
+            TomographyPane.setVisible(false);
+            proteinPane.setVisible(false);
+            PregnancyPane.setVisible(false);
+            UltrasoundPane.setVisible(false);
+            UrographyBtn.setVisible(false);
+            Phonocardiography.setVisible(false);
+            Palpation.setVisible(false);
+        }
     }
- 
+
+    public void closeBtn() {
+                System.exit(0);
+            }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addPatientShowList();
+       // MainYellow();
 
     }
 }

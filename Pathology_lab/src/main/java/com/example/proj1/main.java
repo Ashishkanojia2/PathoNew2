@@ -16,7 +16,7 @@ public class main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         /*stage.initStyle(StageStyle.TRANSPARENT);*/

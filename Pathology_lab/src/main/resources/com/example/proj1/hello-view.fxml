@@ -1,6 +1,7 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.AreaChart?>
@@ -600,3 +601,4 @@
       </BorderPane>
    </children>
 </StackPane>
+-->
