@@ -145,36 +145,6 @@ public class Controller implements Initializable {
     @FXML
     private AnchorPane UrographyPane;
     @FXML
-    private AnchorPane bT01;
-    @FXML
-    private AnchorPane bT02;
-    @FXML
-    private AnchorPane bT03;
-    @FXML
-    private AnchorPane bT04;
-    @FXML
-    private AnchorPane bT05;
-    @FXML
-    private AnchorPane bT06;
-    @FXML
-    private AnchorPane bT07;
-    @FXML
-    private AnchorPane bT08;
-    @FXML
-    private AnchorPane bT09;
-    @FXML
-    private AnchorPane bT10;
-    @FXML
-    private AnchorPane bT11;
-    @FXML
-    private AnchorPane bT12;
-    @FXML
-    private AnchorPane bT13;
-    @FXML
-    private AnchorPane bT14;
-    @FXML
-    private AnchorPane bT15;
-    @FXML
     private Button INQ1;
     @FXML
     private Button INQ10;
@@ -388,7 +358,8 @@ public class Controller implements Initializable {
             resultSet = preparedStatement.executeQuery();
             Patient_Data patientData;
             while (resultSet.next()) {
-                patientData = new Patient_Data(resultSet.getInt("P_id"),
+                patientData = new Patient_Data(
+                        resultSet.getInt("P_id"),
                         resultSet.getString("P_Name"),
                         resultSet.getInt("P_Age"),
                         resultSet.getString("P_Gender"),

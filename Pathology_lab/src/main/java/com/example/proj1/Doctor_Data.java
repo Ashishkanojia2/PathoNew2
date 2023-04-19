@@ -6,7 +6,7 @@ public class Doctor_Data {
     private String D_Name;
     private int D_Age;
     private String D_Gender;
-    private int D_Experience;
+    private String D_Experience;
     private int D_NoT;
     private int D_Income;
     private int D_Treatment_Chrg;
@@ -15,11 +15,11 @@ public class Doctor_Data {
     private String D_Image;
 */
 
-    public Doctor_Data(int D_id, String D_Name, int D_Age, String D_Gender, int D_Experience, int D_NoT
-            , int D_Income, String D_Treatment_Chrg, /*, int D_Image*/int d_treatment_chrg) {
+    public Doctor_Data(int D_id, String D_Name, int D_Age, String D_Gender, String  D_Experience, int D_NoT
+            , int D_Income, String D_Treatment_Chrg) {
     }
 
-    public void Doctor_Data( int D_id,String D_Name,int D_Age,String D_Gender,int D_Experience,int D_NoT,int D_Income,int D_Treatment_Chrg /*,String D_Image*/){
+    public void Doctor_Data( int D_id,String D_Name,int D_Age,String D_Gender, String  D_Experience,int D_NoT,int D_Income,int D_Treatment_Chrg /*,String D_Image*/){
         this.D_id = D_id;
         this.D_Name = D_Name;
         this.D_Age = D_Age;
